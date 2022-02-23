@@ -1161,7 +1161,7 @@ package PLplot_Traditional is
     procedure plgriddata
        (x, y, z                : Real_Vector; -- ungridded x- and y-points; z is height
         x_Grid, y_Grid         : Real_Vector;
-        z_Gridded              : in out Real_Matrix;
+        z_Gridded              : Real_Matrix;
         Gridding_Algorithm     : Gridding_Algorithm_Type;
         Griding_Algorithm_Data : Long_Float);
 

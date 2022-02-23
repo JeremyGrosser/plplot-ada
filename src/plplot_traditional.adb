@@ -553,7 +553,7 @@ package body PLplot_Traditional is
         end if; -- log x and log y
 
         -- Linear plot is indicated.
-        if Axis_Style in No_Box..Linear_Minor_Grid then
+        if Axis_Style <= Linear_Minor_Grid then
             Multiplot_Pairs(
                 x, y,
                 X_Labels      => X_Label_String_Array,
@@ -862,7 +862,6 @@ package body PLplot_Traditional is
         Controls_3 : Real_Vector (0..2); -- 3 control points
         Controls_4 : Real_Vector (0..3); -- 4 control points
         Red_3, Green_3, Blue_3 : Real_Vector (0..2); -- define 3
-        Red_4, Green_4, Blue_4 : Real_Vector (0..3); -- define 4
         Hue_3, Lightness_3, Saturation_3 : Real_Vector (0..2); -- define 3
         Hue_4, Lightness_4, Saturation_4 : Real_Vector (0..3); -- define 4
         Alt_Hue_Path_3 : Boolean_Array_1D (0..2);
@@ -889,19 +888,6 @@ package body PLplot_Traditional is
         Blue_3(0)  := 0.0;
         Blue_3(1)  := 0.0;
         Blue_3(2)  := 0.0;
-
-        Red_4(0)   := 0.0;
-        Red_4(1)   := 0.0;
-        Red_4(2)   := 0.0;
-        Red_4(3)   := 0.0;
-        Green_4(0) := 0.0;
-        Green_4(1) := 0.0;
-        Green_4(2) := 0.0;
-        Green_4(3) := 0.0;
-        Blue_4(0)  := 0.0;
-        Blue_4(1)  := 0.0;
-        Blue_4(2)  := 0.0;
-        Blue_4(3)  := 0.0;
 
         Hue_3(0)        := 0.0;
         Hue_3(1)        := 0.0;
@@ -1715,7 +1701,7 @@ package body PLplot_Traditional is
     procedure plgriddata
        (x, y, z                : Real_Vector; -- ungridded x- and y-points; z is height
         x_Grid, y_Grid         : Real_Vector;
-        z_Gridded              : in out Real_Matrix;
+        z_Gridded              : Real_Matrix;
         Gridding_Algorithm     : Gridding_Algorithm_Type;
         Griding_Algorithm_Data : Long_Float) is
     begin
@@ -1871,7 +1857,7 @@ package body PLplot_Traditional is
         Symbol_Numbers                        : Integer_Array_1D;
         Symbols                               : Legend_String_Array_Type)
     is
-        Number_Entries : Integer := Label_Text'length;
+        Number_Entries : constant Integer := Label_Text'length;
         L : Integer; -- Used to check lengths of arrays.
         PL_Label_Text, PL_Symbols : PL_Legend_String_Array(Label_Text'range);
         C_Legend_String_Array  : array(Label_Text'range) of PL_Legend_String;
@@ -1961,8 +1947,8 @@ package body PLplot_Traditional is
         Number_Values                        : Integer_Array_1D;
         Values                               : Real_Matrix)
     is
-        Number_Labels : Integer := Label_Options'length;
-        Number_Axes : Integer := Axis_Options'length;
+        Number_Labels : constant Integer := Label_Options'length;
+        Number_Axes : constant Integer := Axis_Options'length;
         PL_Label_Text : PL_Legend_String_Array(Label_Text'range);
         C_Legend_String_Array  : array(Label_Text'range) of PL_Legend_String;
         PL_Axis_Options : PL_Legend_String_Array(Axis_Options'range);
