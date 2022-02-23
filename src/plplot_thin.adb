@@ -18,13 +18,7 @@
 -- along with PLplot; if not, write to the Free Software
 -- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-with
-    Ada.Text_IO,
-    PLplot_Auxiliary,
-    System.Address_To_Access_Conversions;
-use
-    PLplot_Auxiliary,
-    Ada.Text_IO;
+with System.Address_To_Access_Conversions;
 
 package body PLplot_Thin is
 
@@ -53,7 +47,7 @@ package body PLplot_Thin is
     -- Question: Will Unchecked_Access, a normal Ada feature, work instead? fix this
 
     function Matrix_To_Pointers(x : Real_Matrix) return Long_Float_Pointer_Array is
-        Index_Of_First_Column : Integer := x'First(2);
+        Index_Of_First_Column : constant Integer := x'First(2);
         x_As_Pointers : Long_Float_Pointer_Array (x'range(1));
     begin
         for Index in x'range(1) loop

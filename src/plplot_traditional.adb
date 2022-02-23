@@ -19,23 +19,15 @@
 -- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 with
-    PLplot_Thin,
-    PLplot_Auxiliary,
     Ada.Text_IO,
     Ada.Numerics.Long_Elementary_Functions,
-    Ada.Strings.Unbounded,
     Ada.Unchecked_Conversion,
-    Ada.Strings.Maps,
     Ada.Command_Line,
-    System,
     System.Address_To_Access_Conversions,
-    Interfaces.C.Pointers,
     Interfaces.C;
 use
     Ada.Text_IO,
-    PLplot_Auxiliary,
     Ada.Numerics.Long_Elementary_Functions,
-    Ada.Strings.Unbounded,
     Interfaces.C;
 
 package body PLplot_Traditional is
